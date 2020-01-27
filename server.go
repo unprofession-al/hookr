@@ -47,7 +47,7 @@ func NewServer(listener, configFile string) (Server, []error) {
 	routes := s.routes()
 	routes.Populate(r, "")
 
-	s.handler = alice.New().Then(r)
+	s.handler = alice.New(s.LoggerMiddleware).Then(r)
 	return s, []error{}
 }
 
