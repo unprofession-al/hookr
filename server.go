@@ -10,7 +10,6 @@ import (
 	"github.com/apex/gateway"
 	"github.com/gorilla/mux"
 	"github.com/justinas/alice"
-	"github.com/unprofession-al/hookr/internal/sink"
 	yaml "gopkg.in/yaml.v2"
 )
 
@@ -50,18 +49,6 @@ func NewServer(listener, configFile string) (Server, []error) {
 
 	s.handler = alice.New().Then(r)
 	return s, []error{}
-}
-
-func send() {
-	config := sink.Config{
-		Kind:       "twilio_sms",
-		Connection: "AC18fc4d9d0b20c50af01a867301d551c4:59aff7cfd0741b6eb2867772bf251573:+13343397255:+41796529849",
-	}
-	s, err := sink.New(config)
-	exitOnErr(err)
-
-	err = s.Send("Test")
-	exitOnErr(err)
 }
 
 func (s Server) run() {
