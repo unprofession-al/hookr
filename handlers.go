@@ -13,6 +13,7 @@ func (s Server) HookHandler(res http.ResponseWriter, req *http.Request) {
 	hName, ok := vars["hook"]
 	if !ok {
 		s.respond(res, req, http.StatusNotFound, fmt.Sprintf("hook not provided"))
+		fmt.Println(fmt.Sprintf("hook not provided, %v", vars))
 		return
 	}
 
