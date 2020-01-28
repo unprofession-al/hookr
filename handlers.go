@@ -9,6 +9,7 @@ import (
 )
 
 func (s Server) HookHandler(res http.ResponseWriter, req *http.Request) {
+	fmt.Println("hook handler triggererd")
 	vars := mux.Vars(req)
 	hName, ok := vars["hook"]
 	if !ok {
@@ -22,6 +23,7 @@ func (s Server) HookHandler(res http.ResponseWriter, req *http.Request) {
 	defer req.Body.Close()
 	if err != nil {
 		s.respond(res, req, http.StatusInternalServerError, fmt.Sprintf("could not read request body: %s", err.Error()))
+		fmt.Println(fmt.Sprintf("Body was trash"))
 		return
 	}
 
