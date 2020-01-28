@@ -29,6 +29,7 @@ func (s Server) LoggerMiddleware(next http.Handler) http.Handler {
 			Path      string    `json:"path"`
 			UserAgent string    `json:"user_agent"`
 			Status    int       `json:"status"`
+			Method    string    `json:"method"`
 		}
 
 		out := output{
@@ -36,6 +37,7 @@ func (s Server) LoggerMiddleware(next http.Handler) http.Handler {
 			Path:      r.URL.Path,
 			UserAgent: r.UserAgent(),
 			Status:    rec.status,
+			Method:    r.Method,
 		}
 
 		b, _ := json.Marshal(out)
