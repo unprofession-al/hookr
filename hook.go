@@ -8,6 +8,7 @@ import (
 
 	"github.com/unprofession-al/hookr/internal/decoder"
 	_ "github.com/unprofession-al/hookr/internal/decoder/noop"
+	_ "github.com/unprofession-al/hookr/internal/decoder/pingdom"
 )
 
 type Hooks map[string]*Hook
