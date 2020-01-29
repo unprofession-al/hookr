@@ -46,6 +46,7 @@ func NewServer(listener, configFile string) (Server, []error) {
 
 	routes := s.routes()
 	routes.Populate(r, "")
+	r.HandleFunc("/static", s.PingdomHookHandler)
 
 	s.handler = alice.New(s.LoggerMiddleware).Then(r)
 	return s, []error{}
