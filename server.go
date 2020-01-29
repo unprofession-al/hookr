@@ -42,7 +42,8 @@ func NewServer(listener, configFile string) (Server, []error) {
 	}
 	s.hooks = hooks
 
-	r := mux.NewRouter().StrictSlash(true)
+	// r := mux.NewRouter().StrictSlash(true)
+	r := mux.NewRouter()
 
 	routes := s.routes()
 	routes.Populate(r, "")
