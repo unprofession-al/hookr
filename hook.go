@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/unprofession-al/hookr/internal/sink"
+	_ "github.com/unprofession-al/hookr/internal/sink/stdout"
 	_ "github.com/unprofession-al/hookr/internal/sink/twilio_sms"
 
 	"github.com/unprofession-al/hookr/internal/decoder"

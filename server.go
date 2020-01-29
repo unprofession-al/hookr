@@ -42,12 +42,9 @@ func NewServer(listener, configFile string) (Server, []error) {
 	}
 	s.hooks = hooks
 
-	// r := mux.NewRouter().StrictSlash(true)
-	r := mux.NewRouter()
+	r := mux.NewRouter().StrictSlash(true)
 
-	routes := s.routes()
-	routes.Populate(r, "")
-	r.HandleFunc("/static", s.PingdomHookHandler)
+	r.HandleFunc("/hooks/{hook}", s.HookHandler)
 
 	s.handler = alice.New(s.LoggerMiddleware).Then(r)
 	return s, []error{}

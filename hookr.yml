@@ -1,0 +1,6 @@
+---
+example:
+  decoder:
+    kind: noop
+  sink:
+    kind: stdout
